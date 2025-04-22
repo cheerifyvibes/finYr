@@ -29,5 +29,7 @@ export const fetchPnrStatus = async (pnrNumber: string) => {
 
   const response = await axios.request(config);
 
+  console.log('Response from redbus:', response.data);
+
   return response.data;
 };
