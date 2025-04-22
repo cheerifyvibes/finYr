@@ -29,14 +29,16 @@ export const fetchPnrStatus = async (pnrNumber: string) => {
 
       const proxyUrl = `https://proxy.scrapeops.io/v1/?api_key=${process.env.PROXY_API_KEY}&url=${directUrl}`;
       const proxyResponse = await axios.get(proxyUrl, {
-        headers,
+        // headers,
         timeout: 10000
       });
 
       return proxyResponse.data;
     }
   } catch (error) {
-    console.error('PNR fetch error:', error);
+
+    let message = error as Error;
+    console.error('PNR fetch error:', message?.message || message);
     
     if (axios.isAxiosError(error)) {
       throw {
