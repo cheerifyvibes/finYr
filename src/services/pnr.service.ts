@@ -27,7 +27,7 @@ export const fetchPnrStatus = async (pnrNumber: string) => {
         throw new Error('Proxy API key not configured');
       }
 
-      const proxyUrl = `https://proxy.scrapeops.io/v1/?api_key=${process.env.PROXY_API_KEY}&url=${encodeURIComponent(directUrl)}`;
+      const proxyUrl = `https://proxy.scrapeops.io/v1/?api_key=${process.env.PROXY_API_KEY}&url=${directUrl}`;
       const proxyResponse = await axios.get(proxyUrl, {
         headers,
         timeout: 10000
